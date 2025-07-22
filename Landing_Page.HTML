@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Botly - Agence de création de chatbot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0d0d0d;
+      color: #ffffff;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 1.5rem 10%;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #ff6600;
+      flex-shrink: 0;
+    }
+
+    nav {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 10%;
+      background: radial-gradient(circle at center, #1a1a1a, #0d0d0d);
+      animation: fadeIn 1.5s ease-out forwards;
+      flex-direction: column;
+      padding-top: 100px; /* Pour compenser header fixe */
+      box-sizing: border-box;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero span {
+      color: #ff6600;
+    }
+
+    .hero p {
+      color: #ccc;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 700px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cta-buttons a {
+      text-decoration: none;
+      padding: 0.9rem 1.5rem;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-orange {
+      background-color: #ff6600;
+      color: white;
+    }
+
+    .btn-outline {
+      border: 2px solid #ff6600;
+      color: #ff6600;
+      background: transparent;
+    }
+
+    .btn-orange:hover {
+      background-color: #e65c00;
+    }
+
+    .btn-outline:hover {
+      background-color: #ff6600;
+      color: white;
+    }
+
+    .features {
+      padding: 5rem 10%;
+      text-align: center;
+    }
+
+    .features h2 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      border: 1px solid #2a2a2a;
+      text-align: left;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #ff6600;
+    }
+
+    .card h3 {
+      color: #ff6600;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      color: #ccc;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    #pricing {
+      margin-top: 3rem;
+    }
+
+    #about, #contact {
+      padding: 4rem 10%;
+      max-width: 900px;
+      margin: 0 auto 4rem auto;
+      text-align: center;
+      background: #1a1a1a;
+      border-radius: 12px;
+      border: 1px solid #2a2a2a;
+    }
+
+    #about h2, #contact h2 {
+      color: #ff6600;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    #about p, #contact p {
+      color: #ccc;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 2rem 10%;
+      text-align: center;
+      color: #888;
+      font-size: 0.9rem;
+      border-top: 1px solid #222;
+      margin-top: 4rem;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .card {
+        text-align: center;
+      }
+      #about, #contact {
+        padding: 2rem 5%;
+      }
+      nav {
+        position: static;
+        transform: none;
+        justify-content: center;
+        gap: 1rem;
+      }
+    }
+
+    /* Ajout pour que les ancres ne soient pas cachées sous le header fixe */
+    section[id] {
+      scroll-margin-top: 80px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Botly</div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#offers">Offres</a>
+      <a href="#pricing">Tarifs</a>
+      <a href="#about">À propos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <p style="text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">Agence Botly</p>
+    <h1>Boostez votre site avec un <span>Chatbot intelligent</span></h1>
+    <p>Nous intégrons un assistant virtuel interactif sur votre site vitrine ou e-commerce pour améliorer l’expérience client et augmenter vos conversions.</p>
+    <div class="cta-buttons">
+      <a href="#pricing" class="btn-orange">Découvrez nos tarifs</a>
+      <a href="#contact" class="btn-outline">Contactez-nous</a>
+    </div>
+  </section>
+
+  <section class="features" id="services">
+    <h2><span style="color: #ff6600;">Ce que fait</span> Botly</h2>
+    <p>Nous créons et intégrons des chatbots personnalisés qui répondent efficacement aux besoins de vos clients, augmentent leur satisfaction et boostent vos ventes.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Assistant virtuel interactif</h3>
+        <p>Un chatbot intégré directement sur votre site, capable de répondre aux questions fréquentes et d’assister vos visiteurs en temps réel.</p>
+      </div>
+      <div class="card">
+        <h3>Support client optimisé</h3>
+        <p>Améliorez l'expérience utilisateur avec un chatbot qui offre un support instantané 24/7, réduisant la charge de votre service client.</p>
+      </div>
+      <div class="card">
+        <h3>Augmentation de la conversion</h3>
+        <p>Un assistant intelligent qui guide vos visiteurs vers l’achat et augmente le taux de conversion de votre site e-commerce.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="offers">
+    <h2><span style="color: #ff6600;">Nos</span> offres</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Offre Basique</h3>
+        <p>Intégration d’un chatbot simple avec FAQ et support basique, prêt à améliorer la relation client sur votre site.</p>
+      </div>
+      <div class="card">
+        <h3>Offre Standard</h3>
+        <p>Chatbot avec design personnalisé adapté à votre identité visuelle pour une expérience utilisateur optimisée et unique.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="pricing">
+    <h2><span style="color: #ff6600;">Nos</span> tarifs</h2>
+    <p>Pour nos premiers clients, profitez d’un tarif préférentiel de lancement :</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Basique</h3>
+        <p><strong>100 CAD</strong> – Intégration d’un chatbot simple (FAQ / support).</p>
+      </div>
+      <div class="card">
+        <h3>Standard</h3>
+        <p><strong>150 CAD</strong> – Chatbot + design personnalisé.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>À propos</h2>
+    <p>Je suis Walid Boujerfaoui, développeur full stack passionné, capable de créer des solutions innovantes pour aider les gens et les entreprises à grandir grâce à la technologie.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Pour toute demande ou information, n’hésitez pas à me contacter à l’adresse suivante :</p>
+    <p><a href="mailto:boujerfaouipro@gmail.com" style="color:#ff6600; text-decoration:none;">boujerfaouipro@gmail.com</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Botly. Tous droits réservés.
+  </footer>
+</body>
+</html>
